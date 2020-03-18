@@ -1,6 +1,6 @@
 # workout-plan
 
-A web application that generates daily workouts to help clients feel their best and maintain wellness. Clients can access curated workouts, create &amp; track manual workouts, upload workouts to Google Calendar, and receive reminders via SMS and email. 
+Generates daily workouts to help clients feel their best and maintain wellness. Clients can access curated workouts, create &amp; track manual workouts, upload workouts to Google Calendar, and receive reminders via SMS and email. 
 
 Connects to [wger/Workout Manager API](https://github.com/wger-project/wger)
 
