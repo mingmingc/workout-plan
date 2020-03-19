@@ -1,0 +1,11 @@
+DROP DATABASE IF EXISTS exercises_db;
+CREATE DATABASE exercises_db;
+
+USE exercises_db;
+
+CREATE TABLE IF NOT EXISTS exercises (
+id INT AUTO_INCREMENT,
+name VARCHAR(45) NOT NULL,
+
+PRIMARY KEY (id)
+);

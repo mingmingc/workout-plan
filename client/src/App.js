@@ -5,7 +5,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      results: "",
+      workouts: "",
       error: {}
     }
   }
@@ -14,9 +14,9 @@ class App extends Component {
     const url = "https://wger.de/api/v2/"
     fetch(`${url}/exercise`)
     .then(res => res.json())
-    .then(({res}) => this.setState({results: res.results[0].description}))
-    .then(console.log(this.state))
+    .then(({res}) => this.setState({workouts: res.results[0].description.getElementsByTagName('p').innerHTML}))
     .catch((error) => this.setState({error}))
+    .then(console.log(this.state))
   }
 
   render() {
