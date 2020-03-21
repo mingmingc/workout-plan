@@ -2,11 +2,10 @@
 
 Generates daily workouts to help clients feel their best and maintain wellness. Clients can access curated workouts, create &amp; track manual workouts, upload workouts to Google Calendar, and receive reminders via SMS and email. 
 
-Connects to [wger/Workout Manager API](https://github.com/wger-project/wger)
-
 ## Technologies
 
 * React
+* MySQL
 
 ## Step 1: Coming up with MVP
 
@@ -22,6 +21,8 @@ Features:
 
 The three features in bold are what I chose to focus on first. Once my MVP is in place, I will implement those in order.
 
-## Step 2: Building API Endpoints
+## Step 2: Creating a database
 
-Based on my MVP, I began to create API endpoints before working on front-end features.
+I started out using a open-sourced 3rd-party API. However, for my app's needs, and due to the exercise data, while being thorough, being highly inconsistent and unstandardized between contributors, I decided to create my own database using MySQL. 
+I created tables & inserted data for exercise groups & muscles. 
+My next step would be to create API endpoints with GET, POST, PUT, and DELETE routes.
