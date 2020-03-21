@@ -6,5 +6,9 @@ USE exercises_db;
 CREATE TABLE IF NOT EXISTS exercises (
 id INT AUTO_INCREMENT,
 name VARCHAR(45) NOT NULL,
+description VARCHAR(250) NOT NULL,
+muscle_1 VARCHAR(65) NOT NULL,
+muscle_2 VARCHAR(65) NOT NULL,
+muscle_3 VARCHAR(65) NOT NULL, 
 PRIMARY KEY (id)
 );
