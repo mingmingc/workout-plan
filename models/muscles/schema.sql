@@ -6,7 +6,7 @@ USE muscles_db;
 CREATE TABLE IF NOT EXISTS muscles (
 id INT AUTO_INCREMENT,
 name VARCHAR(45) NOT NULL,
-group VARCHAR(45) NOT NULL,
+category VARCHAR(45) NOT NULL,
 is_front TINYINT(1),
 PRIMARY KEY (id)
 );
