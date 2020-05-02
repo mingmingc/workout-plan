@@ -1,0 +1,52 @@
+{
+    "muscles": [
+        {
+            "id": 1,
+            "name": "Biceps",
+            "category": "Arms",
+            "is_front": 1
+        }, 
+        {
+            "id": 2,
+            "name": "Anterior deltoid",
+            "category": "Shoulders",
+            "is_front": 1
+        },
+        {
+            "id": 3,
+            "name": "Posterior deltoid",
+            "category": "Shoulders",
+            "is_front": 0
+        },
+        {
+            "id": 4,
+            "name": "Lateral deltoid",
+            "category": "Shoulders",
+            "is_front": 1
+        },
+        {
+            "id": 5,
+            "name": "Traps",
+            "category": "Back",
+            "is_front": 0  
+        },
+        {
+            "id": 6,
+            "name": "Triceps",
+            "category": "Arms",
+            "is_front": 0 
+        }
+    ],
+    "exercises": [
+        {
+            "id": 1,
+            "name": "Arnold press (Overhead Press)",
+            "description": "",
+            "muscles_id": [
+                4,
+                5,
+                6
+            ]
+        }
+    ]
+}
