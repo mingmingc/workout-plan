@@ -5,7 +5,7 @@ Generates daily workouts to help clients feel their best and maintain wellness. 
 ## Technologies
 
 * React
-* MySQL
+* SQL
 
 ## Step 1: Coming up with MVP
 
@@ -24,6 +24,17 @@ The three features in bold are what I chose to focus on first. Once my MVP is in
 
 ## Step 2: Creating a database
 
-I started out using a open-sourced 3rd-party API. However, for my app's needs, and due to the exercise data, while being thorough, being highly inconsistent and unstandardized between contributors, I decided to create my own database using MySQL. 
+I started out using a open-sourced 3rd-party API. However, for my app's needs, and due to the exercise data, while being thorough, being highly inconsistent and unstandardized between contributors, I decided to create my own database using SQL. 
 I created tables & inserted data for exercise groups & muscles. 
-My next step would be to create API endpoints with GET, POST, PUT, and DELETE routes.
+My next steps are to create API endpoints with GET, POST, PUT, and DELETE routes.
+
+I want to be able to name multiple muscles per exercise. My challenge is that I'd want my muscles in a JSON object to be grouped in an array like this:
+__INSERT PICTURE HERE__
+
+In MySQL, arrays are not a recognized data type for a column, but I can create a separate table that relates to both the muscles & exercises table, listing exercise IDs and their corresponding muscle group IDs. I can group these together in a LEFT JOIN. 
+While I work on the architecture to reflect those relationships in a simple way, I used [json-server](https://github.com/typicode/json-server) to create a dummy JSON file reflecting my desired data structure. 
+
+I will then create my frontend table components in React, so that users can view current exercises, add, and remove them.
+
+## Step 3: Creating React components
+## Step 4: Setting up REST API calls in React
