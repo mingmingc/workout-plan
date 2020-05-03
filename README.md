@@ -48,5 +48,6 @@ I used [Reactstrap](https://reactstrap.github.io/) (React Bootstrap library) for
 For the Modal component (used to allow client to add & edit data), I am having an issue with Reactstrap's built-in 'toggle' method being undefined. I have separated the Modal into a child component for the time being. This allows the Modal to render, so my next step will be to add forms, and pass parent props to the child Modal so that user input can be integrated to update state.
 
 Here's my result currently:
+![screenshot](screenshot.png)
 
 ## Step 4: Setting up REST API calls in React
