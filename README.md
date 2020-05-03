@@ -49,5 +49,6 @@ For the Modal component (used to allow client to add & edit data), I am having a
 
 Here's my result currently:
 ![screenshot](screenshot.png)
+![screenshot of modal](screenshot2.png)
 
 ## Step 4: Setting up REST API calls in React
