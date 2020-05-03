@@ -113,7 +113,7 @@ class App extends Component {
     return (
       <div className="App container"> 
         <h1 className="mt-5">Workout Planner</h1> 
-        {/* <ExerciseModal /> */}
+        <ExerciseModal />
         <Table>
           <thead> 
             <tr> 

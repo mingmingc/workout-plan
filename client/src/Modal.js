@@ -13,8 +13,31 @@ const ModalExample = (props) => {
 
   return (
     <div>
-      <Button color="primary" onClick={this.toggleNewExercise} className="my-5">Add Exercise</Button>  
-      <Button color="danger" onClick={toggle}>{buttonLabel}</Button>
+      <Button color="primary" onClick={toggle} className="my-5">Add Exercise</Button>    
+      <Modal isOpen={modal} toggle={toggle} className={className}>
+        <ModalHeader toggle={toggle}>Add New Exercise</ModalHeader>
+        <ModalBody>
+          <FormGroup>
+              <Label for="name">Name</Label>
+              <Input id="name" />
+          </FormGroup>
+          <FormGroup>
+            <Label for="description">Description</Label>
+            <Input id="description" />
+          </FormGroup>
+          <FormGroup>
+            <Label for="muscles">Muscles</Label>
+            <Input id="muscles" />
+          </FormGroup>
+        </ModalBody>
+        <ModalFooter>
+          <Button color="primary" onClick={toggle}>Add</Button>{' '}
+          <Button color="secondary" onClick={toggle}>Cancel</Button>
+        </ModalFooter>
+      </Modal>
+      
+      {/*Code to return to:
+      <Button color="primary" onClick={this.toggleNewExercise} className="my-5">Add Exercise</Button>    
       <Modal isOpen={this.state.newExercise} toggle={this.toggleNewExercise}>
         <ModalHeader toggle={this.toggleNewExercise}>Add a new book</ModalHeader>
         <ModalBody>
@@ -44,7 +67,7 @@ const ModalExample = (props) => {
           <Button color="primary" onClick={this.addExercise.bind(this)}>Add Book</Button>{' '}
           <Button color="secondary" onClick={this.toggleNewExercise.bind(this)}>Cancel</Button>
         </ModalFooter>
-      </Modal>
+      </Modal> */}
     </div>
   );
 }
