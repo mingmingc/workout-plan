@@ -8,7 +8,6 @@ const EditExerciseModal = (props) => {
   } = props;
 
   const [modal, setModal] = useState(false);
-
   const toggle = () => setModal(!modal);
 
   return (

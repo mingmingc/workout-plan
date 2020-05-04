@@ -54,7 +54,7 @@ Here's my result currently:
 This posed a new challenge: I have always built single-component React apps, and was not experienced with passing methods & values between parent & child. I'd have to pass the method as a callback, and pass parameters, then have that callback update the parent component's state.
 
 ## Step 4: Setting up REST API calls in React
-I set up GET, PUT, POST, and DELETE HTTP endpoints, and put these endpoints into methods in the parent component. I chose the Axios client for how it is designed to handle promises.
+I set up GET, PUT, POST, and DELETE HTTP endpoints, and put these endpoints into methods in the parent component. I chose the Axios client for my API because it handles promises well.
 
 I passed the methods containing these endpoints, as well as methods to update state upon user input, to the child Modal component. These modals contain a form where the user can add exercises to our database, or edit an existing exercise in the database. I have event handlers that will track these changes in state. When the Add or Save Changes button is clicked, our HTTP endpoint will reflect data in our state to add (POST) data, or edit (PUT). 
 
