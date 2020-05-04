@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import {Table, Button} from 'reactstrap';
-import ExerciseModal from './Modal';
+import NewModal from './NewModal';
+import EditModal from './EditModal'
 import './App.css';
 
 class App extends Component {
@@ -10,36 +11,58 @@ class App extends Component {
     this.state = {
       exercises: [],
       newExerciseData: {
+        id: '',
         name: '',
         description: '',
         muscles: ''
       },
       editExerciseData: {
+        id: '',
         name: '',
         description: '',
         muscles: ''
       },
-      newExercise: false,
-      editExercise: false,
+      newExerciseModal: false,
+      editExerciseModal: false,
       error: {}
     }
 
+    //We bind the methods that are being passed on to other methods, to ensure
+    //that they have access to the component attributes as they are called throughout.
     this.toggleNewExercise = this.toggleNewExercise.bind(this);
+    this.toggleNewExercise = this.toggleEditExercise.bind(this);
+    this.addExercise = this.addExercise.bind(this);
+    this.deleteExercise = this.deleteExercise.bind(this);
+    this.updateExercise = this.updateExercise.bind(this);
+    this.handler = this.handler.bind(this);
+    this.editHandler = this.editHandler.bind(this);
   }
   
   componentWillMount() {
     this._refreshData();
   }
 
+  handler(data) {
+    this.setState({
+      data
+    })
+  }
+
+  editHandler(id, name, description, muscles) {
+    this.setState({
+      editExerciseData: { id, name, description, muscles }, editExerciseModal: ! this.state.editExerciseModal
+    });
+  }
+
   toggleNewExercise() {
     this.setState({
-      newExercise: ! this.state.newExercise
+      newExerciseModal: ! this.state.newExerciseModal
     });
   }
 
   toggleEditExercise() {
     this.setState({
-      editExercise: ! this.state.editExercise
+      editExerciseModal: ! this.state.editExerciseModal
     });
   }
 
@@ -48,7 +71,8 @@ class App extends Component {
       let {exercises} = this.state;
       exercises.push(response.data);
 
-      this.setState({exercises, newExercise: false, newExerciseData: {
+      this.setState({exercises, newExerciseModal: false, newExerciseData: {
+        id: '',
         name: '',
         description: '',
         muscles: ''
@@ -57,32 +81,22 @@ class App extends Component {
   }
 
   updateExercise() {
-    let {name, description, muscles} = this.state.editExerciseData;
+    let { id, name, description, muscles } = this.state.editExerciseData;
 
-    axios.put('http://localhost:3000/exercises' + this.state.editExerciseData.id, {
-      name, description, muscles
+    axios.put('http://localhost:3000/exercises/' + this.state.editExerciseData.id, {
+      id, name, description, muscles
     }).then((response) => {
       this._refreshData();
 
       this.setState({
-        editExercise: false, editExerciseData: {
-          name: '', 
-          description: '', 
-          muscles: ''
-        }
+        editExerciseModal: false, editExerciseData: { id: '', name: '', description: '', muscles: '' }
       })
-    })
-  }
-
-  editExerciseState(name, description, muscles) {
-    this.setState({
-      editExerciseData: { name, description, muscles }, editExercise: ! this.state.editExercise
     });
   }
 
   deleteExercise(id) {
     axios.delete('http://localhost:3000/exercises/' + id).then((response) => {
-      this._refreshBooks();
+      this._refreshData();
     });
   }
 
@@ -103,8 +117,8 @@ class App extends Component {
           <td className="w-25"> {exercise.description} </td>
           <td> {exercise.muscles} </td>
           <td> 
-            <Button color="success" size="sm" className="mr-2"> Edit </Button> 
-            <Button color="danger" size="sm"> Delete </Button> 
+            <Button color="success" size="sm" className="mr-2" onClick={() => this.editHandler(exercise.id, exercise.name, exercise.description, exercise.muscles)}> Edit </Button> 
+            <Button color="danger" size="sm" onClick={()=> this.deleteExercise(exercise.id)}> Delete </Button> 
           </td>
         </tr>
       )
@@ -113,7 +127,18 @@ class App extends Component {
     return (
       <div className="App container"> 
         <h1 className="mt-5">Workout Planner</h1> 
-        <ExerciseModal />
+        <NewModal toggleNewExercise={this.toggleNewExercise} 
+        addExercise={this.addExercise}
+        state={this.state}
+        newExerciseModal={this.state.newExerciseModal} 
+        newExerciseData={this.state.newExerciseData}
+        handler={this.handler}/>
+        <EditModal toggleEditExercise={this.toggleEditExercise}
+        updateExercise={this.updateExercise}
+        state={this.state}
+        editExerciseModal={this.state.editExerciseModal}
+        editExerciseData={this.state.editExerciseData}
+        handler={this.handler}/> 
         <Table>
           <thead> 
             <tr> 
