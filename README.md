@@ -41,14 +41,25 @@ While I work on the architecture to reflect those relationships in a simple way,
 I then created my frontend table components in React, so that users can view current exercises, add, and remove them.
 
 ## Step 3: Creating React components
- set up an interactive table as a means to test my API endpoints and use those to populate my database. These data points will come in handy as I add on my desired UI features, and I find less tedious than populating the database in a more manual fashion. And, in the meanwhile, I have something of a UI to build off from, and a way to present my work.
+I set up an interactive table as a means to test my API endpoints and use those to populate my database. These data points will come in handy as I add on my desired UI features, and I find less tedious than populating the database in a more manual fashion. And, in the meanwhile, I have something of a UI to build off from, and a way to present my work.
 
 I used [Reactstrap](https://reactstrap.github.io/) (React Bootstrap library) for styling.
 
-For the Modal component (used to allow client to add & edit data), I am having an issue with Reactstrap's built-in 'toggle' method being undefined. I have separated the Modal into a child component for the time being. This allows the Modal to render, so my next step will be to add forms, and pass parent props to the child Modal so that user input can be integrated to update state.
+I wanted a Modal component to pop up when the user adds or edits an exercise. However, the modal would not render and I received an error message that Reactstrap Modal's built-in toggle method was undefined, despite having imported the Modal component at the top of my code. Separating the Modal into a child component and using the doc's example of using a hook to define toggle solved my problem. My modal now renders when I click the "Add Exercise" button. 
 
 Here's my result currently:
 ![screenshot](screenshot.png)
 ![screenshot of modal](screenshot2.png)
 
+This posed a new challenge: I have always built single-component React apps, and was not experienced with passing methods & values between parent & child. I'd have to pass the method as a callback, and pass parameters, then have that callback update the parent component's state.
+
 ## Step 4: Setting up REST API calls in React
+I set up GET, PUT, POST, and DELETE HTTP endpoints, and put these endpoints into methods in the parent component. I chose the Axios client for how it is designed to handle promises.
+
+I passed the methods containing these endpoints, as well as methods to update state upon user input, to the child Modal component. These modals contain a form where the user can add exercises to our database, or edit an existing exercise in the database. I have event handlers that will track these changes in state. When the Add or Save Changes button is clicked, our HTTP endpoint will reflect data in our state to add (POST) data, or edit (PUT). 
+
+Methods to corresponding endpoints are: 
+* _refreshData() for GET endpoint
+* addExercise() for POST 
+* updateExercise() for PUT 
+* deleteExercise() for DELETE
