@@ -51,12 +51,14 @@ Here's my result currently:
 ![screenshot](screenshot.png)
 ![screenshot of modal](screenshot2.png)
 
-This posed a new challenge: I have always built single-component React apps, and was not experienced with passing methods & values between parent & child. I'd have to pass the method as a callback, and pass parameters, then have that callback update the parent component's state.
+This posed a new **challenge**: I have always built single-component React apps, and was not experienced with passing methods & values between parent & child. I'd have to pass the method as a callback, and pass parameters, then have that callback update the parent component's state.
 
 ## Step 4: Setting up REST API calls in React
 I set up GET, PUT, POST, and DELETE HTTP endpoints, and put these endpoints into methods in the parent component. I chose the Axios client for my API because it handles promises well.
 
 I passed the methods containing these endpoints, as well as methods to update state upon user input, to the child Modal component. These modals contain a form where the user can add exercises to our database, or edit an existing exercise in the database. I have event handlers that will track these changes in state. When the Add or Save Changes button is clicked, our HTTP endpoint will reflect data in our state to add (POST) data, or edit (PUT). 
+
+**Overcoming the challenges** of passing methods & state variables from parent to child, and passing user input from the child to parent to update state, took several hours and attempts, but ultimately was very satisfying and gave me a deeper understanding of front-end Javascript concepts, including data binding.
 
 Methods to corresponding endpoints are: 
 * _refreshData() for GET endpoint
