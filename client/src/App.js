@@ -27,10 +27,8 @@ class App extends Component {
       error: {}
     }
 
-    //We bind the methods that are being passed on to other methods, to ensure
-    //that they have access to the component attributes as they are called throughout.
     this.toggleNewExercise = this.toggleNewExercise.bind(this);
-    this.toggleNewExercise = this.toggleEditExercise.bind(this);
+    this.toggleEditExercise = this.toggleEditExercise.bind(this);
     this.addExercise = this.addExercise.bind(this);
     this.deleteExercise = this.deleteExercise.bind(this);
     this.updateExercise = this.updateExercise.bind(this);
