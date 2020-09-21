@@ -1,15 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Input, FormGroup, Label, Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 const EditExerciseModal = (props) => {
-  const {
-    buttonLabel,
-    className
-  } = props;
-
-  const [modal, setModal] = useState(false);
-  const toggle = () => setModal(!modal);
-
   return (
     <div>
       <Modal isOpen={props.editExerciseModal} toggle={() => props.toggleEditExercise()}>
