@@ -1,5 +1,7 @@
 # workout-plan
 
+Live: https://mingmotion.netlify.app
+
 Generates daily workouts to help clients feel their best and maintain wellness. Clients can create & track manual workouts. Clients will be able to access curated workout plans, upload workouts to Google Calendar, and receive reminders via SMS and email.
 
 ## Technologies
